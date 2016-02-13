@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title> </title>
+   <style type="text/css">
+   .destacado {
+       background-color: pink;
+       font-weight: bold;
+   }
+
+   </style>
+</head>
+<body>
+   <select name="cantidad" id="cantidad">
+       <option value="1">1</option>
+       <option value="2">2</option>
+       <option value="3">3</option>
+       <option value="4">4</option>
+       <option value="5">5</option>
+       <option value="6">6</option>
+       <option value="7">7</option>
+       <option value="8">8</option>
+       <option value="9">9</option>
+       <option value="10">10</option>
+   </select>
+
+   <select name="unidades" id="unidades">
+           <option value=""> Seleccionar </option>
+           <option value"gr">Gramos </option>
+           <option value"kg"> Kilogramos </option>
+           <option value "litros"> Litros </option>
+           <option value "docena"> Docenas</option>
+   </select>
+
+   <input type="text" id="producto" placeholder="ingresa el producto">
+
+   <button onclick="agregar()"> enviar </button>
+
+   <ul id="lista">
+   </ul>
+
+</body>
+
+<script type="text/javascript">
+
+    function agregar(){
+        var elemento=document.getElementById("producto").value
+        var cantidad=document.getElementById("cantidad").value
+        var unidades=document.getElementById("unidades").value
+
+        boton=document.createElement("button")
+        textoBoton=document.createTextNode("eliminar")
+        boton.setAttribute("onclick","eliminar(this)")
+        boton.appendChild(textoBoton)
+      
+
+        var item=document.createElement("li")
+        var elementolista=document.createTextNode(elemento+" "+cantidad+" "+unidades)
+               
+        item.appendChild(elementolista)
+        lista.appendChild(item)
+        item.appendChild(boton)    
+
+        item.setAttribute("onclick","destacar(this)");
+        elemento=document.getElementById("producto").value=""
+
+    }
+
+    function destacar(paraDestacar){
+        estado=paraDestacar.className;
+
+        if(estado=="destacado"){
+            paraDestacar.className=""
+        } else {
+            paraDestacar.className="destacado"
+        }
+    }
+
+    function eliminar (paraEliminar) {
+        paraEliminar.parentNode.parentNode.removeChild(paraEliminar.parentNode)
+            
+    }
+
+         
+
+
+</script>
+</html>
